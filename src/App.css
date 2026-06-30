@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+.note-form {
+  width: 40%;
+}
+.note-form > textarea {
+  width: 100%;
+  resize: none;
+  field-sizing: content;
+  border-radius: 10px;
+  min-height: 105px;
+}
