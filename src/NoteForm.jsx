@@ -1,6 +1,8 @@
 import { Button, Paper, TextInput } from "@mantine/core";
 import { useState } from "react";
 import dayjs from "dayjs";
+import advancedFormat from "dayjs/plugin/advancedFormat";
+dayjs.extend(advancedFormat);
 
 const NoteForm = ({ handleOnSubmit }) => {
   const [currentNote, setCurrentNote] = useState({ title: "", body: "", category: "" });
@@ -25,7 +27,7 @@ const NoteForm = ({ handleOnSubmit }) => {
               title: currentNote.title,
               body: currentNote.body,
               category: currentNote.category,
-              createdAt: dayjs().format("YYYY-MM-DD HH:mm"),
+              createdAt: dayjs().format("MMM Do YYYY hh:mm A"),
               updatedAt: null,
             });
             setCurrentNote({ title: "", body: "", category: "" });
