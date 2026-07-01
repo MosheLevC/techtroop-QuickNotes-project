@@ -7,16 +7,16 @@ const NoteForm = ({ handleOnSubmit }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
+    setCurrentNote((prevNote) => ({
+      ...prevNote,
       [name]: value,
     }));
   };
 
   return (
     <Paper shadow="xs" withBorder p="xl" className="note-form">
-      <TextInput name="title" placeholder="title" />
-      <textarea name="body"></textarea>
+      <TextInput name="title" placeholder="title" value={currentNote.title} onChange={handleChange} />
+      <textarea name="body" value={currentNote.body} onChange={handleChange}></textarea>
       <Button
         onClick={() =>
           handleOnSubmit({
@@ -24,7 +24,7 @@ const NoteForm = ({ handleOnSubmit }) => {
             title: currentNote.title,
             body: currentNote.body,
             category: currentNote.category,
-            createdAt: dayjs(),
+            createdAt: dayjs().format("YYYY-MM-DD HH:mm"),
             updatedAt: null,
           })
         }
