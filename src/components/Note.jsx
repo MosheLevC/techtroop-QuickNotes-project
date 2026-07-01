@@ -10,7 +10,7 @@ const Note = ({ id, createdAt, title, body, category, handleRemove }) => {
       <Text size="md" fw="bolder" truncate>
         {title}
       </Text>
-      <Text size="sm" lineClamp={4}>
+      <Text size="sm" lineClamp={title ? 4 : 5}>
         {body}
       </Text>
     </Paper>
