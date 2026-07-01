@@ -13,6 +13,9 @@
   border-radius: 10px;
   min-height: 105px;
 }
+.notes {
+  display: flex;
+}
 .note {
   width: fit-content;
   min-width: 100px;
