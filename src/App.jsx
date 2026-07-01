@@ -15,7 +15,18 @@ function App() {
       />
       <div className="notes">
         {notes.length > 0 &&
-          notes.map((note) => <Note key={note.id} createdAt={note.createdAt} title={note.title} body={note.body} category={note.category} />)}
+          notes.map((note) => (
+            <Note
+              key={note.id}
+              createdAt={note.createdAt}
+              title={note.title}
+              body={note.body}
+              category={note.category}
+              handleRemove={() => {
+                setNotes(notes.filter((currentNote) => currentNote.id !== note.id));
+              }}
+            />
+          ))}
       </div>
     </div>
   );

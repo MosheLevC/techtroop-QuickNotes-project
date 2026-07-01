@@ -1,9 +1,12 @@
-import { Paper, Text } from "@mantine/core";
+import { CloseButton, Flex, Paper, Text } from "@mantine/core";
 
-const Note = ({ id, createdAt, title, body, category }) => {
+const Note = ({ id, createdAt, title, body, category, handleRemove }) => {
   return (
     <Paper shadow="xs" withBorder p="xl" className="note">
-      <Text size="xs">{createdAt}</Text>
+      <Flex align="center">
+        <Text size="xs">{createdAt}</Text>
+        <CloseButton onClick={handleRemove} />
+      </Flex>
       <Text size="md">{title}</Text>
       <Text size="sm">{body}</Text>
     </Paper>

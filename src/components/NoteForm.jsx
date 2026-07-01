@@ -17,8 +17,19 @@ const NoteForm = ({ handleOnSubmit }) => {
 
   return (
     <Paper shadow="xs" withBorder p="xl" className="note-form">
-      <TextInput name="title" placeholder="title" size="md" value={currentNote.title} onChange={handleChange} />
-      <textarea name="body" placeholder="My note..." value={currentNote.body} onChange={handleChange}></textarea>
+      <TextInput
+        name="title"
+        placeholder="title"
+        size="md"
+        value={currentNote.title}
+        onChange={handleChange}
+      />
+      <textarea
+        name="body"
+        placeholder="My note..."
+        value={currentNote.body}
+        onChange={handleChange}
+      ></textarea>
       <Button
         onClick={() => {
           if (currentNote.body) {
