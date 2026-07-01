@@ -13,7 +13,10 @@ function App() {
           setNotes([...notes, newNote]);
         }}
       />
-      {notes.length > 0 && <Note body={notes[0].body} />}
+      <div className="notes">
+        {notes.length > 0 &&
+          notes.map((note) => <Note key={note.id} createdAt={note.createdAt} title={note.title} body={note.body} category={note.category} />)}
+      </div>
     </div>
   );
 }
