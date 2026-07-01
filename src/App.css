@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 .note-form {
@@ -11,4 +12,8 @@
   field-sizing: content;
   border-radius: 10px;
   min-height: 105px;
+}
+.note {
+  width: fit-content;
+  min-width: 100px;
 }
