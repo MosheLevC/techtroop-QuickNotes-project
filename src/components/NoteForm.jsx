@@ -4,8 +4,8 @@ import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 dayjs.extend(advancedFormat);
 
-const NoteForm = ({ handleOnSubmit }) => {
-  const [currentNote, setCurrentNote] = useState({ title: "", body: "", category: "" });
+const NoteForm = ({ handleOnSubmit, isEdit, selectedNote }) => {
+  const [currentNote, setCurrentNote] = useState(selectedNote || { title: "", body: "", category: "" });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,7 +16,7 @@ const NoteForm = ({ handleOnSubmit }) => {
   };
 
   return (
-    <Paper shadow="xs" withBorder p="xl" className="note-form">
+    <>
       <TextInput
         name="title"
         placeholder="title"
@@ -25,32 +25,36 @@ const NoteForm = ({ handleOnSubmit }) => {
         onChange={handleChange}
       />
       <textarea
+        className="note-text"
         name="body"
         placeholder="My note..."
         value={currentNote.body}
         onChange={handleChange}
-      ></textarea>
+      />
       <Button
         onClick={() => {
           if (currentNote.body) {
             handleOnSubmit({
-              id: crypto.randomUUID(),
+              ...currentNote,
+              id: isEdit ? selectedNote.id : crypto.randomUUID(),
               title: currentNote.title,
               body: currentNote.body,
               category: currentNote.category,
-              createdAt: dayjs().format("MMM Do YYYY hh:mm A"),
-              updatedAt: null,
+              createdAt: isEdit ? selectedNote.createdAt : dayjs().format("MMM Do YYYY hh:mm A"),
+              updatedAt: isEdit ? dayjs().format("MMM Do YYYY hh:mm A") : null,
             });
-            setCurrentNote({ title: "", body: "", category: "" });
+            if (!isEdit) {
+              setCurrentNote({ title: "", body: "", category: "" });
+            }
           }
         }}
         disabled={!currentNote.body}
         variant="default"
         fullWidth
       >
-        Add
+        {isEdit ? "Update" : "Add"}
       </Button>
-    </Paper>
+    </>
   );
 };
 export default NoteForm;
