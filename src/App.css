@@ -6,10 +6,9 @@
 .note-form {
   display: flex;
   flex-direction: column;
-  width: 50%;
   gap: 10px;
 }
-.note-form > textarea {
+.note-text {
   width: 100%;
   resize: none;
   field-sizing: content;
@@ -17,7 +16,7 @@
   min-height: 105px;
   border-color: var(--mantine-color-default-border);
 }
-.note-form > textarea::placeholder {
+.note-text::placeholder {
   color: var(--mantine-color-placeholder);
 }
 .notes {
