@@ -18,16 +18,20 @@ const NoteForm = ({ handleOnSubmit }) => {
       <TextInput name="title" placeholder="title" value={currentNote.title} onChange={handleChange} />
       <textarea name="body" value={currentNote.body} onChange={handleChange}></textarea>
       <Button
-        onClick={() =>
-          handleOnSubmit({
-            id: crypto.randomUUID(),
-            title: currentNote.title,
-            body: currentNote.body,
-            category: currentNote.category,
-            createdAt: dayjs().format("YYYY-MM-DD HH:mm"),
-            updatedAt: null,
-          })
-        }
+        onClick={() => {
+          if (currentNote.body) {
+            handleOnSubmit({
+              id: crypto.randomUUID(),
+              title: currentNote.title,
+              body: currentNote.body,
+              category: currentNote.category,
+              createdAt: dayjs().format("YYYY-MM-DD HH:mm"),
+              updatedAt: null,
+            });
+            setCurrentNote({ title: "", body: "", category: "" });
+          }
+        }}
+        disabled={!currentNote.body}
         variant="default"
         fullWidth
       >
