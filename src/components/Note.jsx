@@ -7,7 +7,7 @@ const Note = ({ id, createdAt, title, body, category, handleRemove }) => {
         <Text size="xs">{createdAt}</Text>
         <CloseButton onClick={handleRemove} />
       </Flex>
-      <Text size="md" fw="bolder">
+      <Text size="md" fw="bolder" truncate>
         {title}
       </Text>
       <Text size="sm" lineClamp={4}>
