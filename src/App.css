@@ -4,7 +4,10 @@
   align-items: center;
 }
 .note-form {
-  width: 40%;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 10px;
 }
 .note-form > textarea {
   width: 100%;
