@@ -15,6 +15,10 @@
   field-sizing: content;
   border-radius: 10px;
   min-height: 105px;
+  border-color: var(--mantine-color-default-border);
+}
+.note-form > textarea::placeholder {
+  color: var(--mantine-color-placeholder);
 }
 .notes {
   display: flex;
