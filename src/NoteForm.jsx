@@ -1,4 +1,5 @@
 import { Button, Paper, TextInput } from "@mantine/core";
+import dayjs from "dayjs";
 
 const NoteForm = ({ id, title, body, category, handleOnSubmit }) => {
   let currentTitle = title;
@@ -9,7 +10,9 @@ const NoteForm = ({ id, title, body, category, handleOnSubmit }) => {
       <TextInput placeholder="title" value={title} />
       <textarea>{body}</textarea>
       <Button
-        onClick={() => handleOnSubmit({ id: id ? id : null, title: title ? title : "", body: body, category: category ? category : "" })}
+        onClick={() =>
+          handleOnSubmit({ id: id ? id : null, date: dayjs(), title: title ? title : "", body: body, category: category ? category : "" })
+        }
         variant="default"
         fullWidth
       >
