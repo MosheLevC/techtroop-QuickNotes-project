@@ -1,17 +1,32 @@
 import { Button, Paper, TextInput } from "@mantine/core";
+import { useState } from "react";
 import dayjs from "dayjs";
 
-const NoteForm = ({ id, title, body, category, handleOnSubmit }) => {
-  let currentTitle = title;
-  let currentBody = body;
-  let currentCategory = category;
+const NoteForm = ({ handleOnSubmit }) => {
+  const [currentNote, setCurrentNote] = useState({ title: "", body: "", category: "" });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   return (
     <Paper shadow="xs" withBorder p="xl" className="note-form">
-      <TextInput placeholder="title" value={title} />
-      <textarea>{body}</textarea>
+      <TextInput name="title" placeholder="title" />
+      <textarea name="body"></textarea>
       <Button
         onClick={() =>
-          handleOnSubmit({ id: id ? id : null, date: dayjs(), title: title ? title : "", body: body, category: category ? category : "" })
+          handleOnSubmit({
+            id: crypto.randomUUID(),
+            title: currentNote.title,
+            body: currentNote.body,
+            category: currentNote.category,
+            createdAt: dayjs(),
+            updatedAt: null,
+          })
         }
         variant="default"
         fullWidth
