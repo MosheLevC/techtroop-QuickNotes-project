@@ -23,7 +23,9 @@ function App() {
               body={note.body}
               category={note.category}
               handleRemove={() => {
-                setNotes(notes.filter((currentNote) => currentNote.id !== note.id));
+                if (confirm("Are you sure you want to delete this note?")) {
+                  setNotes(notes.filter((currentNote) => currentNote.id !== note.id));
+                }
               }}
             />
           ))}
