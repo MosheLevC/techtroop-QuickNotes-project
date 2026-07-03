@@ -1,15 +1,29 @@
 import { CloseButton, Flex, Paper, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import NoteModal from "./NoteModal";
+import { CATEGORIES } from "../constants/categories";
 
 const Note = ({ selectedNote, handleRemove, handleUpdate }) => {
   const [opened, { open, close }] = useDisclosure(false);
-  const { title, body, createdAt, updatedAt } = selectedNote;
+  const { title, body, createdAt, updatedAt, category } = selectedNote;
+
+  const categoryConfig = CATEGORIES[category] || CATEGORIES.None;
 
   return (
     <>
       <NoteModal opened={opened} close={close} selectedNote={selectedNote} handleUpdate={handleUpdate} />
-      <Paper shadow="xs" withBorder p="md" className="note" onClick={open} style={{ cursor: "pointer" }}>
+      <Paper
+        shadow="xs"
+        withBorder
+        p="md"
+        className="note"
+        onClick={open}
+        style={{
+          cursor: "pointer",
+          backgroundColor: categoryConfig.color,
+          borderColor: categoryConfig.border,
+        }}
+      >
         <Flex align="center" justify="space-between">
           <div>
             <Text style={{ fontSize: "9px" }} c="dimmed">
