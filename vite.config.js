@@ -4,7 +4,7 @@ import path from "path";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/",
+  base: "/techtroop-QuickNotes-project/",
   plugins: [react()],
   resolve: {
     alias: {
