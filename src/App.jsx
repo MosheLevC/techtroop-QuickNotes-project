@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useDisclosure } from "@mantine/hooks";
+import { Paper } from "@mantine/core";
 import "./App.css";
 import NoteForm from "./components/NoteForm";
 import Note from "./components/Note";
