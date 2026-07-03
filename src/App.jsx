@@ -1,12 +1,14 @@
+import { useLocalStorage } from "@mantine/hooks";
 import { Paper } from "@mantine/core";
 import "./App.css";
 import NoteForm from "./components/NoteForm";
 import Note from "./components/Note";
-import { Modal, Paper } from "@mantine/core";
-import NoteModal from "./components/NoteModal";
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useLocalStorage({
+    key: "quicknotes-notes",
+    defaultValue: [],
+  });
 
   const handleAddNote = (newNote) => setNotes([...notes, newNote]);
   const handleUpdate = (updatedNote) => {
