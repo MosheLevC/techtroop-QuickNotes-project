@@ -26,11 +26,11 @@ const Note = ({ selectedNote, handleRemove, handleUpdate }) => {
       >
         <Flex align="center" justify="space-between">
           <div>
-            <Text style={{ fontSize: "9px" }} c="dimmed">
+            <Text style={{ fontSize: "8px" }} c="dimmed">
               Created: {createdAt}
             </Text>
             {selectedNote.updatedAt && (
-              <Text style={{ fontSize: "9px" }} c="dimmed">
+              <Text style={{ fontSize: "8px" }} c="dimmed">
                 Updated: {updatedAt}
               </Text>
             )}
