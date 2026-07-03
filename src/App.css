@@ -8,17 +8,6 @@
   flex-direction: column;
   gap: 10px;
 }
-.note-text {
-  width: 100%;
-  resize: none;
-  field-sizing: content;
-  border-radius: 10px;
-  min-height: 105px;
-  border-color: var(--mantine-color-default-border);
-}
-.note-text::placeholder {
-  color: var(--mantine-color-placeholder);
-}
 .notes {
   display: flex;
   flex-wrap: wrap;

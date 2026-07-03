@@ -1,4 +1,4 @@
-import { Button, Paper, TextInput, Select } from "@mantine/core";
+import { Button, Paper, TextInput, Select, Textarea } from "@mantine/core";
 import { useState } from "react";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
@@ -18,9 +18,17 @@ const NoteForm = ({ handleOnSubmit, isEdit, selectedNote }) => {
 
   return (
     <>
-      <TextInput name="title" label="title" size="md" value={currentNote.title} onChange={handleChange} />
+      <TextInput
+        name="title"
+        placeholder="title text..."
+        label="title"
+        size="md"
+        value={currentNote.title}
+        onChange={handleChange}
+      />
       <Select
         label="Category"
+        size="md"
         data={Object.keys(CATEGORIES)}
         value={currentNote.category || "None"}
         onChange={(value) =>
@@ -30,12 +38,15 @@ const NoteForm = ({ handleOnSubmit, isEdit, selectedNote }) => {
           }))
         }
       />
-      <textarea
-        className="note-text"
+      <Textarea
+        label="Note text"
         name="body"
-        placeholder="My note..."
+        placeholder="my note..."
         value={currentNote.body}
         onChange={handleChange}
+        size="md"
+        autosize
+        minRows={4}
       />
       <Button
         onClick={() => {
