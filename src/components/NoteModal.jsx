@@ -1,17 +1,14 @@
-import { Modal } from "@mantine/core";
+import { Modal, Text, Title } from "@mantine/core";
 import NoteForm from "./NoteForm";
 
 const NoteModal = ({ opened, close, selectedNote, handleUpdate }) => {
   return (
-    <Modal
-      styles={{
-        title: { color: "var(--mantine-color-black)" },
-      }}
-      opened={opened}
-      onClose={close}
-      withCloseButton={false}
-    >
+    <Modal opened={opened} onClose={close} withCloseButton={false}>
       <div className="note-form">
+        <Title c="var(--mantine-color-black)">
+          <Text>Created: {selectedNote.createdAt}</Text>
+          {selectedNote.updatedAt && <Text>Updated: {selectedNote.updatedAt}</Text>}
+        </Title>
         <NoteForm
           key={selectedNote?.id}
           handleOnSubmit={(updatedNote) => {
