@@ -33,22 +33,22 @@ const NoteForm = ({ handleOnSubmit, isEdit, selectedNote }) => {
       />
       <Button
         onClick={() => {
-          if (currentNote.body) {
-            handleOnSubmit({
-              ...currentNote,
-              id: isEdit ? selectedNote.id : crypto.randomUUID(),
-              title: currentNote.title,
-              body: currentNote.body,
-              category: currentNote.category,
-              createdAt: isEdit ? selectedNote.createdAt : dayjs().format("MMM Do YYYY hh:mm A"),
-              updatedAt: isEdit ? dayjs().format("MMM Do YYYY hh:mm A") : null,
-            });
-            if (!isEdit) {
-              setCurrentNote({ title: "", body: "", category: "" });
-            }
+          handleOnSubmit({
+            ...currentNote,
+            id: isEdit ? selectedNote.id : crypto.randomUUID(),
+            title: currentNote.title,
+            body: currentNote.body,
+            category: currentNote.category,
+            createdAt: isEdit ? selectedNote.createdAt : dayjs().format("MMM Do YYYY hh:mm A"),
+            updatedAt: isEdit ? dayjs().format("MMM Do YYYY hh:mm A") : null,
+          });
+          if (!isEdit) {
+            setCurrentNote({ title: "", body: "", category: "" });
           }
         }}
-        disabled={!currentNote.body}
+        disabled={
+          !currentNote.body || (isEdit && JSON.stringify(currentNote) === JSON.stringify(selectedNote))
+        }
         variant="default"
         fullWidth
       >
