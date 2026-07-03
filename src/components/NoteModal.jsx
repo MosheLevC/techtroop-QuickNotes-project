@@ -5,7 +5,7 @@ const NoteModal = ({ opened, close, selectedNote, handleUpdate }) => {
   return (
     <Modal opened={opened} onClose={close} withCloseButton={false}>
       <div className="note-form">
-        <Title c="var(--mantine-color-black)">
+        <Title c="dimmed">
           <Text>Created: {selectedNote.createdAt}</Text>
           {selectedNote.updatedAt && <Text>Updated: {selectedNote.updatedAt}</Text>}
         </Title>
